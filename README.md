@@ -19,7 +19,7 @@ The above command will:
 * Assing the role to the creator
 * Enable alerts (every 1 hour) to the channel #water-alerts. The alert will metnion the related @role to notify subscribers.
 
-*Only members with the "Create Role" permission can create rimnders.*
+Only members with the "Create Role" permission can create reminders.
 
 ### Subscribe to a reminder
 
@@ -39,7 +39,7 @@ To prevent reminders from going out between 11pm and 08am:
 !set-offhours DrinkWater 23:00 08:00
 ```
 
-*The time is based on the computer running the bot.*
+The time is based on the computer running the bot.
 
 ## Running the bot
 
