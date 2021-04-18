@@ -11,4 +11,7 @@ setup(name='reminderbot',
         'reminderbot',
         'reminderbot.cogs'
     ],
+    install_requires=[
+        "discord.py"
+    ]
 )
