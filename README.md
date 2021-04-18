@@ -19,7 +19,7 @@ The above command will:
 * Assing the role to the creator
 * Enable alerts (every 1 hour) to the channel #water-alerts. The alert will metnion the related @role to notify subscribers.
 
-Only members with the "Create Role" permission can create reminders.
+Only members with the "Manage Role" permission can create reminders.
 
 ### Subscribe to a reminder
 
