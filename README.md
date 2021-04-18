@@ -15,14 +15,15 @@ For example, to create a new hourly reminder to drink water.
 
 The above command will: 
 
-    * Create a new role for people that want to be reminded
-    * Assing the role to the creator
-    * Enable alerts (every 1 hour) to the channel #water-alerts. The alert will metnion the related @role to notify subscribers.
+* Create a new role for people that want to be reminded
+* Assing the role to the creator
+* Enable alerts (every 1 hour) to the channel #water-alerts. The alert will metnion the related @role to notify subscribers.
 
 ### Subscribe to a reminder
 
 ```
 !addme DrinkWater
+```
 
 ## Running the bot
 
@@ -33,6 +34,7 @@ The above command will:
 2. Init DB. There's no command for this yet. Create a sqlite3 db and run the SQL script in rmeinderbot/data/schema.sql
 
 3. Install dependencies:
+
 ```
 python -m venv venv
 source venv/bin/activate
@@ -41,12 +43,14 @@ pip install -e .
 ```
 
 4. Copy sample config and edit:
+
 ```
 cp remindersbot/data/sample.config.json remindersbot/data/config.json
 vim remindersbot/data/config.json
 ```
 
 5. Run bot:
+
 ```
 python -m reminderbot.main
 ```
