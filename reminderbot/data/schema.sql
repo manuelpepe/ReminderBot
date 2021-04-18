@@ -10,12 +10,12 @@ CREATE TABLE IF NOT EXISTS reminder (
     every INTEGER,
     last_at TEXT,
     guild_id INTEGER,
+    channel_id INTEGER,
     PRIMARY KEY(id),
     FOREIGN KEY(guild_id) REFERENCES guild(id)
 );
 
 CREATE TABLE IF NOT EXISTS guild (
     id INTEGER,
-    channelIdAlerts INTEGER,
     PRIMARY KEY(id)
 );

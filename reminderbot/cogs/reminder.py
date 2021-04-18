@@ -1,4 +1,6 @@
 import asyncio
+from typing import Union
+
 
 import discord
 from discord.ext import commands
@@ -26,8 +28,7 @@ class Reminder(commands.Cog):
                 rems = self.store.get_reminders(guild.id)
                 for rem in rems:
                     if rem.time_has_passed():
-                        channel_id = self.store.get_reminders_channel_id(guild.id)
-                        channel = get_channel_from_guild(guild, channel_id)
+                        channel = rem.get_channel(guild)
                         role = rem.get_role(guild, self.prefix)
                         if role is None or role is None:
                             # TODO: Log warnings/errors
@@ -39,8 +40,8 @@ class Reminder(commands.Cog):
 
 
     @commands.command(name="new-reminder")
-    async def new_reminder(self, ctx, name: str, hours: int, message: str):
-        """ <name: str> <hours: num> <message: str> Create new reminder """
+    async def new_reminder(self, ctx, name: str, hours: Union[int, float], message: str, channel: discord.TextChannel):
+        """ <name: str> <hours: num> <message: str> <channel: #channel> Create new reminder """
         if not ctx.author.permissions_in(ctx.channel).manage_roles:
             return await ctx.send("No tenes permisos para crear reminders. \nNecesitas 'Manage Roles' para usar este comando.")
         if roles.role_exists(ctx.guild, name, self.prefix):
@@ -50,8 +51,8 @@ class Reminder(commands.Cog):
         else:
             log = f"Requested by {ctx.author.mention}"
             role = await roles.create_role(ctx.guild, name, self.prefix, log)
-            self.store.create_reminder(ctx.guild.id, name, hours, message)
-            print("Created reminder")
+            self.store.create_reminder(ctx.guild.id, name, hours, message, channel.id)
+            await ctx.author.add_roles(role)
             return await ctx.send("Nuevo reminder creado.")
 
     @commands.command()

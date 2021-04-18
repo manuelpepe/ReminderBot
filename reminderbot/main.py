@@ -56,7 +56,7 @@ class Bot(commands.Bot):
             except Exception as e:
                 error = f'\n '
                 print(f'ERROR - {extension}:')
-                PRINT(f"{type(e).__name__} : {e}")
+                print(f"{type(e).__name__} : {e}")
         print("Done loading extensions")
 
     async def on_message(self, message):

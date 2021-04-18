@@ -7,13 +7,14 @@ from reminderbot.db import DB
 class Reminder:
     DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 
-    def __init__(self, id: int, name: str, message: str, every: int, last_at: Optional[str], guild_id: int, db: DB = None):
+    def __init__(self, id: int, name: str, message: str, every: int, last_at: Optional[str], guild_id: int, channel_id: int, db: DB = None):
         self.id = id
         self.name = name
         self.message = message
         self.every = every
         self.last_at = last_at
         self.guild_id = guild_id
+        self.channel_id = channel_id
         self.db = db
 
     def time_has_passed(self):
@@ -38,7 +39,7 @@ class Reminder:
 
     def get_channel(self, guild: Guild) -> Optional[TextChannel]:
         for ch in guild.channels:
-            if ch.id == self.guild_id:
+            if ch.id == self.channel_id:
                 return ch
         return None
 
@@ -61,8 +62,5 @@ class ReminderStore:
     def get_reminders(self, guild_id: int) -> List[Reminder]:
         return [Reminder(*args, db = self.db) for args in self.db.get_reminders(guild_id)]
     
-    def get_reminders_channel_id(self, guild_id: int) -> int:
-        return self.db.get_reminders_channel_id(guild_id)
-
-    def create_reminder(self, guild_id: int, name: str, every: int, message: str):
-        self.db.create_reminder(guild_id, name, every, message)
+    def create_reminder(self, guild_id: int, name: str, every: int, message: str, channel_id: int):
+        self.db.create_reminder(guild_id, name, every, message, channel_id)
