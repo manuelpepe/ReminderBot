@@ -1,0 +1,7 @@
+{
+    "token": "YOUR-BOT-TOKEN",
+    "description": "Notify users with periodic role-based reminders",
+    "role_prefix": "reminders-",
+    "dbname": "reminders.db"
+}
+
