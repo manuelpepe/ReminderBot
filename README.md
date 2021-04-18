@@ -5,6 +5,8 @@ A simple discord bot that allows users to subscribe to periodic reminders with r
 
 ## Usage
 
+### Create new reminder
+
 For example, to create a new hourly reminder to drink water. 
 
 ```
@@ -16,6 +18,11 @@ The above command will:
     * Create a new role for people that want to be reminded
     * Assing the role to the creator
     * Enable alerts (every 1 hour) to the channel #water-alerts. The alert will metnion the related @role to notify subscribers.
+
+### Subscribe to a reminder
+
+```
+!addme DrinkWater
 
 ## Running the bot
 

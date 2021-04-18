@@ -17,6 +17,13 @@ class DB:
         finally:
             con.close()
 
+    def register_guild(self, guild_id: int):
+        with self.con() as con:
+            cur = con.cursor()
+            cur.execute("INSERT INTO guild (id) VALUES (?)", (guild_id, ))
+            con.commit()
+            cur.close()
+
     def get_reminders(self, guild_id: int):
         with self.con() as con:
             cur = con.cursor()

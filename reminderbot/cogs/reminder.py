@@ -39,6 +39,11 @@ class Reminder(commands.Cog):
             await asyncio.sleep(60)
 
 
+    @commands.Cog.listener()
+    async def on_guild_join(self, guild):
+        self.db.register_guild(guild.id)
+
+
     @commands.command(name="new-reminder")
     async def new_reminder(self, ctx, name: str, hours: Union[int, float], message: str, channel: discord.TextChannel):
         """ <name: str> <hours: num> <message: str> <channel: #channel> Create new reminder """
