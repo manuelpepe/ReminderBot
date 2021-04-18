@@ -27,7 +27,7 @@ class Reminder(commands.Cog):
             for guild in self.bot.guilds:
                 rems = self.store.get_reminders(guild.id)
                 for rem in rems:
-                    if rem.time_has_passed():
+                    if rem.is_time():
                         channel = rem.get_channel(guild)
                         role = rem.get_role(guild, self.prefix)
                         if role is None or role is None:

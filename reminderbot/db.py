@@ -29,12 +29,21 @@ class DB:
             cur = con.cursor()
             return cur.execute("SELECT * FROM reminder WHERE guild_id = ?", (guild_id, )).fetchall()
 
-    def create_reminder(self, guild_id: int, name: str, every: int, message: str, channel_id: int):
+    def create_reminder(
+         self, 
+         guild_id: int, 
+         name: str, 
+         every: int, 
+         message: str, 
+         channel_id: int, 
+         offhours_start: Optional[str] = None, 
+         offhours_end: Optional[str] = None
+        ):
         with self.con() as con:
             cur = con.cursor()
             res = cur.execute(
-                "INSERT INTO reminder (name, message, every, last_at, guild_id, channel_id) VALUES (?, ?, ?, ?, ?, ?)", 
-                (name, message, every, None, guild_id, channel_id)
+                "INSERT INTO reminder (name, message, every, last_at, guild_id, channel_id, offhours_start, offhours_end) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
+                (name, message, every, None, guild_id, channel_id, offhours_start, offhours_end)
             )
             con.commit()
             cur.close()

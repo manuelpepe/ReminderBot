@@ -29,9 +29,11 @@ The above command will:
 
 1. Clone the repo
 
-`git clone https://github.com/manuelpepe/RemindersBot.git`
+```
+git clone https://github.com/manuelpepe/RemindersBot.git
+```
 
-2. Init DB. There's no command for this yet. Create a sqlite3 db and run the SQL script in rmeinderbot/data/schema.sql
+2. Init DB. There's no command for this yet. Create a sqlite3 db and run the SQL script in `reminderbot/data/schema.sql`
 
 3. Install dependencies:
 
